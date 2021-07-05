@@ -1,0 +1,54 @@
+﻿<Window x:Class="MCG.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MCG"
+        mc:Ignorable="d"
+        Title="ランチャー"
+        Height="450"
+        Width="800"
+        ResizeMode="CanResizeWithGrip"
+        Loaded="Window_Loaded">
+  <Window.Resources>
+    <!-- ボタンのスタイル -->
+    <Style TargetType="Button">
+      <Setter Property="Margin"
+              Value="5" />
+      <Setter Property="Padding"
+              Value="3" />
+    </Style>
+    <!-- グループ見出しのスタイル -->
+    <Style x:Key="GroupTitleStyle"
+           TargetType="TextBlock">
+      <Setter Property="Margin"
+              Value="5,10,5,0" />
+      <Setter Property="FontWeight"
+              Value="Bold" />
+      <Setter Property="Foreground"
+              Value="DarkBlue" />
+    </Style>
+  </Window.Resources>
+  <Window.ContextMenu>
+    <!-- コンテキストメニュー -->
+    <ContextMenu>
+      <MenuItem Header="設定再読み込み(_R)"
+                Click="MenuReload_Click" />
+      <MenuItem Header="ランチャーの場所を開く(_O)"
+                Click="MenuFolderOpen_Click" />
+      <Separator />
+      <MenuItem x:Name="MinimizedMenuItem"
+                Header="アプリを起動したらランチャー最小化(_M)"
+                IsCheckable="True"
+                IsChecked="False"
+                ToolTip="※Ctrlキーを押しながらアプリを起動した場合は最小化しません" />
+      <Separator />
+      <MenuItem Header="ヘルプ(_H)"
+                Click="MenuHelp_Click" />
+    </ContextMenu>
+  </Window.ContextMenu>
+  <ScrollViewer Margin="0,0,0,16">
+    <!-- この中にボタン等を追加していく -->
+    <StackPanel x:Name="MainContainer" />
+  </ScrollViewer>
+</Window>
